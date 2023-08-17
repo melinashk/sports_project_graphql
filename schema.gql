@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserDto {
+  _id: ID!
+  name: String!
+  email: String!
+}
+
+type SportDto {
+  _id: ID!
+  name: String!
+  description: String!
+  user: UserDto
+}
+
+type AuthResponse {
+  user: UserDto!
+  accessToken: String!
+}
+
+type Query {
+  currentUser(id: String!): UserDto!
+  sport(id: String!): [SportDto!]!
+  sports(page: Float!, limit: Float!): [SportDto!]!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): UserDto!
+  createSport(input: CreateSportInput!): SportDto!
+  updateSport(id: String!, input: CreateSportInput!): SportDto!
+  deleteSport(id: String!): SportDto!
+  loginUser(input: LoginInput!): AuthResponse!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input CreateSportInput {
+  name: String!
+  description: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
